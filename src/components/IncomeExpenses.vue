@@ -1,17 +1,3 @@
- <template>
-  <div class="inc-exp-container">
-    <div>
-      <h4>Доход</h4>
-      <p id="money-plus" class="money plus">+${{ income }}</p>
-    </div>
-    <div>
-      <h4>Расход</h4>
-      <p id="money-minus" class="money minus">-${{ expenses }}</p>
-    </div>
-    <IncomeExpenseChart :income="income" :expenses="expenses" />
-  </div>
-</template>
-
 <script setup>
 import { defineProps } from 'vue'
 import IncomeExpenseChart from './IncomeExpenseChart.vue'
@@ -27,6 +13,20 @@ const props = defineProps({
   },
 })
 </script>
+
+<template>
+  <div class="inc-exp-container">
+    <div>
+      <h4>Доход</h4>
+      <p id="money-plus" class="money plus">+${{ income }}</p>
+    </div>
+    <div>
+      <h4>Расход</h4>
+      <p id="money-minus" class="money minus">-${{ expenses }}</p>
+    </div>
+    <IncomeExpenseChart :income="income" :expenses="expenses" />
+  </div>
+</template>
 
 <style scoped>
 .inc-exp-container {

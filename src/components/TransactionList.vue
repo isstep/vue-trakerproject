@@ -1,14 +1,3 @@
-<template>
-  <li
-    :class="transaction.amount < 0 ? 'minus' : 'plus'"
-  >
-    {{ transaction.text }} <span>${{ transaction.amount }}</span>
-    <button class="delete-btn" @click="deleteTransaction(transaction.id)">
-      x
-    </button>
-  </li>
-</template>
-
 <script setup>
 import { defineProps, defineEmits } from 'vue'
 
@@ -25,6 +14,17 @@ const deleteTransaction = (id) => {
   emit('transactionDeleted', id)
 }
 </script>
+
+<template>
+  <li
+    :class="transaction.amount < 0 ? 'minus' : 'plus'"
+  >
+    {{ transaction.text }} <span>${{ transaction.amount }}</span>
+    <button class="delete-btn" @click="deleteTransaction(transaction.id)">
+      x
+    </button>
+  </li>
+</template>
 
 <style scoped>
 li {

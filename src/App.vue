@@ -125,6 +125,33 @@ export default {
 };
 </script>
 
+<template>
+  <Header />
+  <div class="container">
+    <Balance :transactions="transactions" />
+    <IncomeExpenses :income="income" :expenses="expenses" />
+    <AddTransaction
+      :categories="categories"
+      @addTransaction="handleAddTransaction"
+    />
+    <Filter
+      :categories="categories"
+      @filter="handleFilter"
+      @search="handleSearch"
+    />
+    <transition-group name="list" tag="ul" class="list">
+      <TransactionList
+        v-for="transaction in filteredTransactions"
+        :key="transaction.id"
+        :transaction="transaction"
+        @transactionDeleted="handleDeleteTransaction"
+      />
+    </transition-group>
+    <IncomeExpenseChart :income="income" :expenses="expenses" />
+    <CategoryChart :transactions="transactions" />
+  </div>
+</template>
+
 <style>
 @import "./assets/styles.css";
 .container {
@@ -158,30 +185,3 @@ export default {
   }
 }
 </style>
-
-<template>
-  <Header />
-  <div class="container">
-    <Balance :transactions="transactions" />
-    <IncomeExpenses :income="income" :expenses="expenses" />
-    <AddTransaction
-      :categories="categories"
-      @addTransaction="handleAddTransaction"
-    />
-    <Filter
-      :categories="categories"
-      @filter="handleFilter"
-      @search="handleSearch"
-    />
-    <transition-group name="list" tag="ul" class="list">
-      <TransactionList
-        v-for="transaction in filteredTransactions"
-        :key="transaction.id"
-        :transaction="transaction"
-        @transactionDeleted="handleDeleteTransaction"
-      />
-    </transition-group>
-    <IncomeExpenseChart :income="income" :expenses="expenses" />
-    <CategoryChart :transactions="transactions" />
-  </div>
-</template>

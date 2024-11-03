@@ -28,7 +28,7 @@ const balance = computed(() => {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   text-align: center;
-  animation: fadeIn 1s ease-out;
+
 }
 
 .balance h1 {
@@ -36,16 +36,7 @@ const balance = computed(() => {
   font-size: 2em;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+
 
 @media (max-width: 600px) {
   .balance h1 {
